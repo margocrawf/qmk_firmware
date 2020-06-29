@@ -21,13 +21,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
      KC_SLSH,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                               KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_EQL,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_TAB,  KC_SCLN, KC_COMM, KC_DOT,    KC_P,    KC_Y,                              KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    KC_RCTL,
+     KC_TAB,  KC_SCLN, KC_COMM, KC_DOT,    KC_P,    KC_Y,                              KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    KC_RGUI,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      KC_ESC,   KC_A,    KC_O,    KC_E,    KC_U,    KC_I,                               KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    KC_RALT,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_LBRC, KC_QUOT,  KC_Q,    KC_J,    KC_K,    KC_X,    KC_SPC,           KC_RGUI,  KC_B,    KC_M,    KC_W,    KC_V,   KC_Z,     KC_RBRC,
+     KC_LBRC, KC_QUOT,  KC_Q,    KC_J,    KC_K,    KC_X,    KC_SPC,           KC_RCTL,  KC_B,    KC_M,    KC_W,    KC_V,   KC_Z,     KC_RBRC,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
-                                   TG(_LOWER),KC_LSFT,  KC_SPC,                    KC_ENT, KC_BSPC, TG(_RAISE)
+                          LT(_LOWER, KC_MINS),KC_LSFT, KC_SPC,                  KC_ENT, KC_BSPC, LT(_RAISE, KC_MINS)
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
   ),
 
@@ -37,7 +37,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      KC_CAPS,   KC_NO,   KC_NO,   KC_NO,  KC_NO,     KC_NO,                            KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_ESC,  KC_MINS, KC_UNDS,KC_BSLASH, KC_PIPE, KC_GRV,                             KC_TILD, KC_PGUP,  KC_UP,  KC_PGDN, KC_NO,   _______,
+     KC_ESC,  KC_MINS, KC_UNDS,KC_BSLASH, KC_GRV, KC_PIPE,                             KC_TILD, KC_PGUP,  KC_UP,  KC_PGDN, KC_NO,   _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      KC_LBRC, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, _______,            _______,  KC_NO,   KC_LEFT, KC_DOWN, KC_RGHT, KC_NO,  KC_RBRC,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
@@ -96,7 +96,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case DVORAK:
       if (record->event.pressed) {
         set_single_persistent_default_layer(_DVORAK);
-        rgblight_setrgb(RGB_BLUE); // set underglow to blue on base DVORAK layer
+        //rgblight_setrgb(RGB_BLUE); // set underglow to blue on base DVORAK layer
       }
       return false;
       break;
@@ -104,7 +104,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       if (record->event.pressed) {
         layer_on(_LOWER);
         update_tri_layer(_LOWER, _RAISE, _ADJUST);
-        rgblight_setrgb(RGB_TURQUOISE);
+        //rgblight_setrgb(RGB_TURQUOISE);
       } else {
         layer_off(_LOWER);
         update_tri_layer(_LOWER, _RAISE, _ADJUST);
@@ -115,7 +115,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       if (record->event.pressed) {
         layer_on(_RAISE);
         update_tri_layer(_LOWER, _RAISE, _ADJUST);
-        rgblight_setrgb(RGB_GREEN);
+        //rgblight_setrgb(RGB_GREEN);
       } else {
         layer_off(_RAISE);
         update_tri_layer(_LOWER, _RAISE, _ADJUST);
@@ -125,7 +125,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case ADJUST:
       if (record->event.pressed) {
         layer_on(_ADJUST);
-        rgblight_setrgb(RGB_PURPLE);
+        //rgblight_setrgb(RGB_PURPLE);
       } else {
         layer_off(_ADJUST);
       }
