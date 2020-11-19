@@ -53,6 +53,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #define SOFT_SERIAL_PIN D0 // or D1, D2, D3, E6
 
+#define LED_CAPS_LOCK_PIN B7
+#define LED_PIN_ON_STATE 0
+
 #define BACKLIGHT_PIN B6
 #define BACKLIGHT_BREATHING
 #define BACKLIGHT_LEVELS 6
@@ -80,7 +83,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #endif
 
 /* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
-#define DEBOUNCING_DELAY 5
+#define DEBOUNCE 5
 
 /* define if matrix has ghost (lacks anti-ghosting diodes) */
 //#define MATRIX_HAS_GHOST
